@@ -32,14 +32,16 @@
                                    {:ios
                                     {:source-paths ["react-native/src" "src" "env/dev"]
                                      :figwheel     true
-                                     :compiler     {:output-to     "target/ios/app.js"
+                                     :compiler     {:compiler-stats true
+                                                    :output-to     "target/ios/app.js"
                                                     :main          "env.ios.main"
                                                     :output-dir    "target/ios"
                                                     :optimizations :none}}
                                     :android
                                     {:source-paths ["react-native/src" "src" "env/dev"]
                                      :figwheel     true
-                                     :compiler     {:output-to     "target/android/app.js"
+                                     :compiler     {:compiler-stats true
+                                                    :output-to     "target/android/app.js"
                                                     :main          "env.android.main"
                                                     :output-dir    "target/android"
                                                     :optimizations :none}
