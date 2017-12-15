@@ -10,6 +10,9 @@ lein figwheel
 ```
 
 ```
+boot run-ios              # figwheels default
+```
+```
 boot run-android
 ```
 

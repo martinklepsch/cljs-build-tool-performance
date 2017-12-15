@@ -33,6 +33,15 @@
                                  :output-dir    "target/android"
                                  :optimizations :none})))
                                     
+(deftask run-ios []
+  (comp (watch)
+        (reload)
+        (cljs :compiler-options {:compiler-stats true
+                                 :verbose       true
+                                 :output-to     "target/ios/app.js"
+                                 :main          'env.ios.main
+                                 :output-dir    "target/ios"
+                                 :optimizations :none})))
 
 
 #_(defproject status-im "0.1.0-SNAPSHOT"

@@ -33,6 +33,7 @@
                                     {:source-paths ["react-native/src" "src" "env/dev"]
                                      :figwheel     true
                                      :compiler     {:compiler-stats true
+                                                    :verbose       true
                                                     :output-to     "target/ios/app.js"
                                                     :main          "env.ios.main"
                                                     :output-dir    "target/ios"
@@ -41,6 +42,7 @@
                                     {:source-paths ["react-native/src" "src" "env/dev"]
                                      :figwheel     true
                                      :compiler     {:compiler-stats true
+                                                    :verbose       true
                                                     :output-to     "target/android/app.js"
                                                     :main          "env.android.main"
                                                     :output-dir    "target/android"
