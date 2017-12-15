@@ -39,14 +39,6 @@
   []
   (ra/stop-figwheel!))
 
-(hawk/watch! [{:paths   ["resources"]
-               :handler (fn [ctx e]
-                          (let [path         "src/status_im/utils/js_resources.cljs"
-                                js-resourced (slurp path)]
-                            (spit path (str js-resourced " ;;"))
-                            (spit path js-resourced))
-                          ctx)}])
-
 (defn test-id? [id]
   (s/includes? (name id) "-test"))
 
@@ -72,5 +64,14 @@
                       (map keyword (s/split env-build-ids #","))
                       [:android])
       builds        (get-builds build-ids cljs-builds)]
-  (start-figwheel build-ids builds)
-  (rfs/-main))
+  (when (System/getenv "AUTOSTART_FIGWHEEL")
+    (hawk/watch! [{:paths   ["resources"]
+                   :handler (fn [ctx e]
+                              (let [path         "src/status_im/utils/js_resources.cljs"
+                                    js-resourced (slurp path)]
+                                (spit path (str js-resourced " ;;"))
+                                (spit path js-resourced))
+                              ctx)}])
+
+    (start-figwheel build-ids builds)
+    (rfs/-main)))
